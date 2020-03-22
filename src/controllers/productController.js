@@ -8,12 +8,16 @@ controller.list = async (req, res) => {
     });
 }
 
+
+controller.addForm = (req, res) => {
+    res.render('productAdd');
+}
+
 controller.add = async (req, res) => {
     console.log(req.body);
     const product = new Product(req.body);
     await product.save();
-    res.send('Añadido');
-    //res.redirect('/');
+    res.redirect('/');
 }
 
 controller.updateForm = async (req, res) => {
@@ -28,6 +32,11 @@ controller.update = async (req, res) => {
     res.redirect('/');
 }
 
+controller.delete = async (req, res) => {
+    const { id } = req.params;
+    await Product.remove({_id: id});
+    res.redirect('/');
+}
 
 
 
