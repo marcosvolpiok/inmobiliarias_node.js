@@ -16,6 +16,19 @@ controller.add = async (req, res) => {
     //res.redirect('/');
 }
 
+controller.updateForm = async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    console.log(product)
+    res.render('productEdit', { product });
+}
+
+controller.update = async (req, res) => {
+    const { id } = req.params;
+    await Product.update({_id: id}, req.body);
+    res.redirect('/');
+}
+
+
 
 
 module.exports = controller;

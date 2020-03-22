@@ -1,5 +1,5 @@
 <% products.map(function(product) { %>
     <%=product.title%>
     <%=product.description%>
-    
+    <a href="update/<%=product.id%>">Update</a>
 <% }); %>
